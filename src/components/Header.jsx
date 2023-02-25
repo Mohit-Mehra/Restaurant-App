@@ -4,9 +4,17 @@ import { motion } from 'framer-motion'
 import Avatar from '../img/avatar.png'
 import { MdShoppingBasket } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { app } from '../firebase.config'
+
+
 const Header = () => {
-    const login = ()=>{
-        
+    const firebaseAuth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    const login = async ()=>{
+        const response = await signInWithPopup(firebaseAuth,provider)
+        console.log(response)
     }
 
     return (
