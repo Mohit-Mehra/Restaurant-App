@@ -1,6 +1,8 @@
 import React from "react";
 import Delivery from "../img/delivery.png";
 import HeroBg from "../img/heroBg.png";
+import I1 from "../img/i1.png";
+import { heroData } from "../utils/data";
 
 const HomeContainer = () => {
   return (
@@ -22,9 +24,9 @@ const HomeContainer = () => {
           </div>
         </div>
 
-        <p className="text-[2.5rem] lg:text-[4.5rem] tracking-wide text-headingColor font-bold">
+        <p className="text-[2.5rem] lg:text-[3.25rem] tracking-wide text-headingColor font-bold">
           The Fastest Delivery in{" "}
-          <span className="text-orange-600 text-[3rem] lg:text-[5rem]">
+          <span className="text-orange-600 text-[3rem] lg:text-[4rem]">
             Your City
           </span>
         </p>
@@ -46,11 +48,29 @@ const HomeContainer = () => {
       <div className="py-2 flex-1 flex items-center relative">
         <img
           src={HeroBg}
-          className="ml-auto w-full lg:w-auto h-420 lg:h-650"
+          className="ml-auto w-full lg:w-auto h-420 lg:h-600"
           alt="hero-bg"
         />
-        <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center px-32 py-4">
-          <div className="w-190 p-2 bg-cardOverlay backdrop-blur-md"></div>
+
+        <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center px-32 py-4 gap-2 flex-wrap">
+          {heroData &&
+            heroData.map((n) => (
+              <div
+                key={n.id}
+                className="w-190 min-w-[90px] p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col items-center justify-center"
+              >
+                <img src={n.imageSrc} className="w-30 -mt-20" alt="" />
+                <p className="text-base font-semibold text-textColor mt-4">
+                  {n.name}
+                </p>
+                <p className="text-xs text-lighttextGray-500 font-semibold my-2">
+                  {n.desp}
+                </p>
+                <p className="text-xm font-semibold text-headingColor">
+                  <span className="text-xs text-red-600">₹</span> {n.price}
+                </p>
+              </div>
+            ))}
         </div>
       </div>
     </section>
